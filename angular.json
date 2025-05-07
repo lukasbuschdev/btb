@@ -28,12 +28,16 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -62,6 +66,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "hmr": false
+          },
           "configurations": {
             "production": {
               "buildTarget": "btb:build:production"
