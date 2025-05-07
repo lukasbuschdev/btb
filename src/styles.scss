@@ -117,36 +117,12 @@ p, a, button {
   position: absolute;
 }
 
-.gap-5 {
-  gap: 5px;
-}
+$gap-sizes: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 100;
 
-.gap-10 {
-  gap: 10px;
-}
-
-.gap-15 {
-  gap: 15px;
-}
-
-.gap-20 {
-  gap: 20px;
-}
-
-.gap-25 {
-  gap: 25px;
-}
-
-.gap-30 {
-  gap: 30px;
-}
-
-.gap-40 {
-  gap: 40px;
-}
-
-.gap-50 {
-  gap: 40px;
+@each $size in $gap-sizes {
+  .gap-#{$size} {
+    gap: $size * 1px;
+  }
 }
 
 h1 {
@@ -154,16 +130,16 @@ h1 {
   font-weight: 600;
   font-family: $font;
   line-height: 0.8;
-  color: $blue;
+  color: $txt-white;
   text-align: center;
 }
 
 h2 {
   font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
-  font-weight: 400;
+  font-weight: 600;
   font-family: $font;
   line-height: 1;
-  color: $blue;
+  color: $txt-white;
   text-align: center;
 }
 
@@ -172,7 +148,7 @@ h3 {
   font-weight: 400;
   font-family: $font;
   line-height: 1;
-  color: $blue;
+  color: $txt-white;
   text-align: center;
 }
 
@@ -181,7 +157,7 @@ h4 {
   font-weight: 400;
   font-family: $font;
   line-height: 1;
-  color: $blue;
+  color: $txt-white;
   text-align: center;
 }
 
