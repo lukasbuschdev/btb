@@ -51,7 +51,7 @@ h1, h2, h3, h4, span, a, p, li {
 }
 
 span, li, a, p, button {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 body {
@@ -163,15 +163,55 @@ h4 {
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0 !important;
+  -webkit-appearance: none !important;
+  margin: 0 !important;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield !important;
-    appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 input[type="number"] {
-    -ms-appearance: none !important;
+  -ms-appearance: none !important;
+}
+
+.btn-primary {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $txt-white;
+  border: 1px solid $violet-dark;
+  border-radius: 15px;
+  font-family: $font;
+  padding: 10px 15px;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+    background: transparent !important;
+  }
+}
+
+.bg-red {
+  background: $gradient-red;
+
+  &:hover {
+    border-color: #ff218a;
+  }
+}
+
+.bg-orange {
+  background: $gradient-orange;
+
+  &:hover {
+    border-color: #e97d00;
+  }
+}
+
+.bg-blue {
+  background: $gradient-blue;
+
+  &:hover {
+    border-color: #2472d3;
+  }
 }

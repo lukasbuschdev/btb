@@ -1,9 +1,35 @@
-<section class="center">
-    <div class="center">
+<section class="center column gap-30">
+    <div class="center column gap-25">
         <h1>Master JavaScript</h1>
+        <h4>Learn all the basics or test your knowledge</h4>
     </div>
 
-    <div class="container">
+    <div class="container center">
+        <div class="card column">
+            <div class="head row gap-5">
+                <div class="circle red"></div>
+                <div class="circle orange"></div>
+                <div class="circle green"></div>
+            </div>
 
+            <div class="content row between gap-15">
+                <div class="text column gap-25">
+                    <div class="path">
+                        <span>src/main.js</span>
+                    </div>
+                    <div class="column gap-5">
+                        <span>{{ `function greet() {` }}</span>
+                        <span>{{ `console.log("Hello, welcome to Back To Basics!");` }}</span>
+                        <span>{{ `}` }}</span>
+                    </div>
+                </div>
+
+                <div class="buttons column gap-15">
+                    <button class="btn-primary bg-red" routerLink="/learn">Learn Basics</button>
+                    <button class="btn-primary bg-blue" routerLink="/practice">Practice Basics</button>
+                    <button class="btn-primary bg-orange" routerLink="/challenge">Start Challenge</button>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

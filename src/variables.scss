@@ -3,13 +3,20 @@ $white: #ffffff;
 $txt-white: #ffffff;
 $txt-black: #000000;
 $grey: #3f3f3f;
-$blue: #00ffe0;
-$yellow: #ffe900;
+$pink: #aa41ff;
 $violet-light: #af72ff;
 $violet-medium: #2d0097;
 $violet-dark: #340079;
 
+$red: #e92b2b;
+$orange: #eb9e11;
+$green: #5eca5e;
+
 $background-gradient: linear-gradient(135deg, $violet-light, $violet-dark);
+$gradient-red: linear-gradient(135deg, #ff218a, #ff1919);
+$gradient-orange: linear-gradient(135deg, #e97d00, #c74000);
+$gradient-blue: linear-gradient(135deg, #2472d3, #004567);
+
 
 $font: 'Exo 2';
 
