@@ -1,25 +1,26 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
-import { Observable } from 'rxjs';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { typeTask } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  http = inject(HttpClient);
-  config = inject(ConfigService);
+  private supabase: SupabaseClient;
+  public allTasks: typeTask[] = [];
 
-  allTasks: typeTask[] = [];
+  constructor(private config: ConfigService) {
+    this.supabase = createClient(
+      this.config.supabaseUrl,
+      this.config.supabaseKey
+    );
 
-  fetchData(): Observable<typeTask[]> {
-    return this.http.get<typeTask[]>(`${this.config.supabaseUrl}/rest/v1/tasks`, {
-      headers: {
-        apiKey: this.config.supabaseKey, 
-        Authorization: `Bearer ${this.config.supabaseKey}`
-      }
-    });
+    this.loadTasks();
   }
 
+  public async loadTasks(): Promise<void> {
+    const { data } = await this.supabase.from('tasks').select('*');
+    this.allTasks = data ?? [];
+  }
 }

@@ -11,14 +11,9 @@ import { DataService } from './services/data.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'btb';
-
   data = inject(DataService);
 
   ngOnInit(): void {
-    this.data.fetchData().subscribe({
-      next: (task) => console.log(task),
-      error: (err) => console.log('Fetching error', err)
-    });
+    console.log(this.data.allTasks)
   }
 }

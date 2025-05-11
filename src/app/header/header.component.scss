@@ -3,7 +3,7 @@
 header {
     position: fixed;
     top: 0;
-    height: 60px;
+    height: 80px;
     width: 100%;
     padding: 0 15px;
     align-items: center;
@@ -11,10 +11,31 @@ header {
     .menu {
         display: none;
     }
+
+    .logo {
+        img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+    }
 }
 
 @media(max-width: 800px) {
     .menu {
         display: block !important;
+
+        img {
+            height: 30px;
+            width: 30px;
+            object-fit: contain;
+
+            @media(hover: hover) {
+                &:hover {
+                    cursor: pointer;
+                    filter: brightness(0.75);
+                }
+            }
+        }
     }
 }
