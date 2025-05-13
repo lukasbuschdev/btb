@@ -13,7 +13,7 @@ import { DataService } from './services/data.service';
 export class AppComponent {
   data = inject(DataService);
 
-  ngOnInit(): void {
-    console.log(this.data.allTasks)
+  async ngOnInit(): Promise<void> {
+    await this.data.loadTasks();
   }
 }

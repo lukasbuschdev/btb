@@ -7,6 +7,8 @@ export type typeTask = {
     id: string;
     category: string;
     testCases: typeTestCase[];
+    text: string;
+    function: string;
 }
 
 export type typeTestCase = {
