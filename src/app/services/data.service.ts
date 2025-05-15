@@ -10,11 +10,6 @@ export class DataService {
   private supabase: SupabaseClient;
 
   public allTasks: typeTask[] = [];
-  
-  public allArrayTasks: typeTask[] = [];
-  public allObjectTasks: typeTask[] = [];
-  public allDomTasks: typeTask[] = [];
-  public allGeneralTasks: typeTask[] = [];
   public categories: string[] = [];
 
   constructor(private config: ConfigService) {
@@ -28,15 +23,7 @@ export class DataService {
     const { data } = await this.supabase.from('tasks').select('*');
     this.allTasks = data ?? [];
 
-    this.getTasksOfCategories();
     this.getCategories();
-  }
-
-  getTasksOfCategories(): void {
-    this.allArrayTasks = this.allTasks.filter(task => task.category === 'Arrays');
-    this.allObjectTasks = this.allTasks.filter(task => task.category === 'Objects');
-    this.allDomTasks = this.allTasks.filter(task => task.category === 'DOM');
-    this.allGeneralTasks = this.allTasks.filter(task => task.category === 'General');
   }
 
   getCategories(): void {

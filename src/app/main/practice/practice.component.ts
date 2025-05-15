@@ -14,24 +14,13 @@ export class PracticeComponent {
   
   data = inject(DataService);
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.data.loadTasks();
     this.setActiveCategory('General');
   }
 
   setActiveCategory(category: string): void {
     this.activeCategory = category;
-    this.selectTasks();
-  }
-
-  selectTasks(): void {
-    if(this.activeCategory === 'General') {
-      this.activeTasks = this.data.allGeneralTasks;
-    } else if(this.activeCategory === 'Arrays') {
-      this.activeTasks = this.data.allArrayTasks;
-    } else if(this.activeCategory === 'Objects') {
-      this.activeTasks = this.data.allObjectTasks;
-    } else {
-      this.activeTasks = this.data.allDomTasks;
-    }
+    this.activeTasks = this.data.allTasks.filter(task => task.category === this.activeCategory);
   }
 }
