@@ -1,6 +1,45 @@
 @use 'variables' as *;
 
 section {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
     width: 100%;
+    margin-top: 80px;
+}
+
+.container {
+    height: 90vh;
+    width: 100%;
+
+    .categories {
+        justify-content: center;
+    }
+    
+    .category-content {
+        .tasks-container {
+            .single-task {
+                height: 45px;
+                width: 200px;
+                font-size: 1.1rem;
+                color: $white;
+                border: 1px solid blue;
+                border-radius: 15px;
+                padding: 10px 20px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                span {
+                    display: inline-block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}
+
+.active-category {
+    background-color: green;
 }

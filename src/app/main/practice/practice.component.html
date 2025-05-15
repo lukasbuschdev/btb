@@ -3,14 +3,25 @@
         <h2>Practice 'till mastery</h2>
     </div>
 
-    <div class="container">
-        <div class="chapters">
-            <!-- @for(let chapter of chapters; track $index) {
-
-            } -->
+    <div class="container column gap-30">
+        <div class="categories row gap-15">
+            @for(category of data.categories; track $index) {
+                <button class="btn-primary" (click)="setActiveCategory(category)" [class.bg-orange]="activeCategory === category">{{ category }}</button>
+            }
         </div>
-        <div class="chapter-content">
 
+        <div class="category-content row">
+            <div class="tasks-container column gap-10">
+                @for (task of activeTasks; track $index) {
+                    <div class="single-task center bg-blue">
+                        <span>{{ task.text }}</span>
+                    </div>
+                }
+            </div>
+
+            <div class="">
+
+            </div>
         </div>
     </div>
 </section>

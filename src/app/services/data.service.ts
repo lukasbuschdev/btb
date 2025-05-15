@@ -15,6 +15,7 @@ export class DataService {
   public allObjectTasks: typeTask[] = [];
   public allDomTasks: typeTask[] = [];
   public allGeneralTasks: typeTask[] = [];
+  public categories: string[] = [];
 
   constructor(private config: ConfigService) {
     this.supabase = createClient(
@@ -28,13 +29,17 @@ export class DataService {
     this.allTasks = data ?? [];
 
     this.getTasksOfCategories();
+    this.getCategories();
   }
 
   getTasksOfCategories(): void {
-    console.log(this.allTasks)
     this.allArrayTasks = this.allTasks.filter(task => task.category === 'Arrays');
     this.allObjectTasks = this.allTasks.filter(task => task.category === 'Objects');
     this.allDomTasks = this.allTasks.filter(task => task.category === 'DOM');
     this.allGeneralTasks = this.allTasks.filter(task => task.category === 'General');
+  }
+
+  getCategories(): void {
+    this.categories = [...new Set(this.allTasks.map(task => task.category))];
   }
 }
