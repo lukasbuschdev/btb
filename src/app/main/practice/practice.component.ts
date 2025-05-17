@@ -15,12 +15,14 @@ export class PracticeComponent {
   data = inject(DataService);
 
   async ngOnInit(): Promise<void> {
-    await this.data.loadTasks();
-    this.setActiveCategory('General');
+    // await this.data.loadTasks();
+
+    await this.setActiveCategory('General');
   }
 
-  setActiveCategory(category: string): void {
+  async setActiveCategory(category: string): Promise<void> {
     this.activeCategory = category;
-    this.activeTasks = this.data.allTasks.filter(task => task.category === this.activeCategory);
+    this.activeTasks = await this.data.getTasksByCategory(category);
+    // this.activeTasks = this.data.allTasks.filter(task => task.category === this.activeCategory);
   }
 }
