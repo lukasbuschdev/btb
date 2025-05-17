@@ -24,7 +24,7 @@ export class DataService extends Dexie {
     );
 
     this.version(1).stores({
-      tasks: 'id, category',
+      tasks: 'id',
     });
   }
 
@@ -32,16 +32,22 @@ export class DataService extends Dexie {
     await this.tasks.put(task);
   }
 
-  async getTasksByCategory(category: string): Promise<typeTask[]> {
-    return this.tasks.where('category').equals(category).toArray();
+  async getAllTasks(): Promise<void> {
+    this.allTasks = await this.tasks.toArray() ?? [];
   }
 
   public async loadTasks(): Promise<void> {
-    const { data } = await this.supabase.from('tasks').select('*');
-    this.allTasks = data ?? [];
+    await this.getAllTasks();
     console.log(this.allTasks)
 
-    await this.tasks.bulkPut(this.allTasks); 
+    if(!this.allTasks.length) {
+      console.log('No indexed tasks found!')
+      const { data } = await this.supabase.from('tasks').select('*');
+      this.allTasks = data ?? [];
+      
+      await this.tasks.bulkPut(this.allTasks);
+      console.log('Tasks fetched and pushed to IndexDB!')
+    }
 
     this.getCategories();
   }
